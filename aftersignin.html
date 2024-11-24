@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Dashboard</title>
+    <link rel="stylesheet" href="aftersignin.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="nav-logo">
+                    <a href="index.html"><i data-lucide="home"></i></a>
+                    
+                </div>
+                <div class="nav-links">
+                    <a href="marketplace.html" class="nav-item">
+                        <i data-lucide="shopping-bag"></i>
+                        <span>Marketplace</span>
+                    </a>
+                    <a href="colors.html" class="nav-item">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="todolist.html" class="nav-item">
+                        <i data-lucide="clipboard-list"></i>
+                        <span>To-Do List</span>
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="nav-right">
+                <div class="streak">
+                    <i data-lucide="flame"></i>
+                    <span>12 Day Streak</span>
+                </div>
+                <button class="logout-btn">
+                    <i data-lucide="log-out"></i>
+                    <span><a href="index1.html">Logout</a> </span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="emergency-button">
+            <button>
+                <i data-lucide="phone"></i>
+                <span><a href="messaging.html">Need immediate help? Click here for emergency support</a></span>
+            </button>
+        </div>
+
+        <section class="activities-section">
+            <h2>Recommended for You</h2>
+            <div class="activity-carousel">
+                <!-- Les cartes d'activités seront insérées ici -->
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DWVS1recTqXhf" width="100%" height="380" frameborder="0" class="rounded-lg shadow-lg"></iframe>
+        </div>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+    <script src="//code.tidio.co/lyt4wvcc4annclramxd8fisjnkuwnonx.js" async></script>
+</body>
+</html>

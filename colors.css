@@ -1,0 +1,181 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+header {
+    width: 100%;
+    background-color: #4f46e5; /* Use primary color */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-title {
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    width: 80%; /* Adjust the width of the container */
+}
+
+select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Advanced Design Boxes */
+.advanced-boxes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    margin-top: 30px;
+    width: 80%; /* Adjust to control width of the boxes */
+}
+
+.box {
+    
+    width: 45%; /* Slightly smaller width for better spacing */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.reward-box {
+    background-color: #e0f7fa;
+}
+
+.dream-box {
+    background-color: #ffe082;
+}
+
+/* Centered Box for Breathing */
+.centered-box {
+    width: 70%; /* Make it a bit wider for better presentation */
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #c8e6c9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Additional Styling for Text */
+h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 14px;
+    color: #3b72ad;
+}
+
+.title{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 10ppx;
+    padding-top: 65px;
+  }
+  #close-alert {
+    margin-top: 20px;
+    background-color: #16b5fe;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+margin-left: 100px;
+  }
+  
+  #close-alert:hover {
+    background-color: #08efff;
+  }
+  
+  /* From Uiverse.io by mRcOol7 */ 
+.card {
+    margin-top: 250px;
+
+    --background: linear-gradient(to right, #74ebd5 0%, #acb6e5 100%);
+    width: 290px;
+    height: 354px;
+    padding: 5px;
+    padding: 20px , 30px;
+
+    border-radius: 1rem;
+    overflow: visible;
+    background: #74ebd5;
+    background: var(--background);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .card::before,
+  .card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    z-index: -1;
+  }
+  
+  .card::before {
+    background: linear-gradient(to bottom right, #f6d365 0%, #fda085 100%);
+    transform: rotate(2deg);
+  }
+  
+  .card::after {
+    background: linear-gradient(to top right, #84fab0 0%, #8fd3f4 100%);
+    transform: rotate(-2deg);
+  }
+  
+  .card-info {
+    --color: #292b2c;
+    background: var(--color);
+    color: var(--color);
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    border-radius: 0.7rem;
+    z-index: 2;
+  }
+  
+  .card .title {
+    font-weight: bold;
+    letter-spacing: 0.1em;
+  }
+  
+  .card:hover::before,
+  .card:hover::after {
+    opacity: 0;
+  }
+  
+  .card:hover .card-info {
+    color: #74ebd5;
+    transition: color 1s;
+  }
+  

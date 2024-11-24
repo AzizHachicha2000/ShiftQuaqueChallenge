@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Mood Colors</title>
+    <link rel="stylesheet" href="colors.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <span class="dashboard-title">Dashboard</span>
+        </nav>
+    </header>
+    <div class="card" id="alert-box">
+        <div class="card-info" >
+          <center><p id="affirmation-text" class="title"></p></center>
+          <button id="close-alert">Close</button>
+        </div>
+      </div>
+    <div class="container">
+        <h1>Choose Your Mood</h1>
+        <p>When you select your mood, the background color will change automatically.</p>
+        <select id="moodSelector">
+            <option value="sad">😢 Sad</option>
+            <option value="angry">😡 Angry</option>
+            <option value="stressed">😰 Stressed</option>
+            <option value="happy">😊 Happy</option>
+        </select>
+        
+        <!-- Advanced Design Boxes -->
+        <center><div class="advanced-boxes">
+            <div class="box reward-box">
+                <h2>Rewards</h2>
+                <p>Track your rewards and achievements.</p>
+            </div>
+            <div class="box dream-box">
+                <a href="dream.html"><h2>Dreams</h2></a>
+                <p>Visualize your dreams and goals.</p>
+            </div>
+            <div class="box breathing-box">
+                <a href="breath.html"><h2>Breathing</h2></a>
+                <p>Learn breathing techniques to relax.</p>
+            </div>
+        </div></center>
+    </div>
+    
+    <script src="colors.js"></script>
+</body>
+</html>

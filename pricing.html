@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing Page</title>
+  <style>
+    :root {
+      --color-primary: #4f46e5;
+      --color-primary-hover: #4338ca;
+      --color-secondary: #e0e7ff;
+      --color-secondary-hover: #c7d2fe;
+      --color-text: #111827;
+      --color-text-light: #6b7280;
+      --color-white: #ffffff;
+      --color-background: #f9fafb;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--color-background);
+      color: var(--color-text);
+    }
+
+    
+
+    .container {
+      max-width: 960px;
+      margin: 30px auto;
+      padding: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--color-primary);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .pricing-option {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-secondary-hover);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .pricing-option:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .price {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin: 10px 0;
+    }
+
+    .pricing-option p {
+      font-size: 1rem;
+      color: var(--color-text-light);
+      margin: 10px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--color-primary);
+      color: var(--color-white);
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: var(--color-primary-hover);
+    }
+
+    .financial-aid {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .financial-aid input[type="submit"] {
+      display: inline-block;
+      background: var(--color-secondary);
+      color: var(--color-primary);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .financial-aid input[type="submit"]:hover {
+      background: var(--color-secondary-hover);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Pricing Options</h1>
+    <div class="pricing-grid">
+      <div class="pricing-option">
+        <h2>Monthly Plan</h2>
+        <div class="price">50 DT</div>
+        <p>Perfect for short-term needs and flexibility.</p>
+        <a href="#" class="btn">Choose Plan</a>
+      </div>
+      <div class="pricing-option">
+        <h2>Annual Plan</h2>
+        <div class="price">600 DT</div>
+        <p>Best value for long-term commitment.</p>
+        <a href="#" class="btn">Choose Plan</a>
+      </div>
+    </div>
+    <div class="financial-aid">
+      <h2>Need Financial Aid?</h2>
+      <form action="#" method="POST">
+        <input type="submit" value="Apply for Financial Aid">
+      </form>
+    </div>
+  </div>
+</body>
+</html>

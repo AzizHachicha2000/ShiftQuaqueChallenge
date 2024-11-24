@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindfulStudent - Mental Health Support</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <header class="header">
+    <nav class="nav container">
+      <div class="nav-brand">
+        <i data-lucide="brain" class="brand-icon"></i>
+        <span class="brand-name">PeerLift</span>
+      </div>
+      
+      <div class="nav-menu" id="nav-menu">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="index1.html"  class="btn btn-secondary">Sign In</a>
+        <a href="index1.html" class="btn btn-primary">Sign Up</a>
+      </div>
+
+      <button class="nav-toggle" id="nav-toggle">
+        <i data-lucide="menu"></i>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            Your mental health
+            <span class="accent">matters to us</span>
+          </h1>
+          <p class="hero-text">
+            Join thousands of students who've found peace, support, and growth through our platform. 
+            Start your journey to better mental health today.
+          </p>
+          <div class="hero-buttons">
+            <button class="btn btn-primary btn-lg" onclick="window.location.href='index1.html';">Get Started Free</button>
+            <button class="btn btn-secondary btn-lg" onclick="window.location.href='pricing.html';">Try Premium</button>
+
+          </div>
+        </div>
+
+        <div class="benefits">
+          <div class="benefit-card">
+            <i data-lucide="shield" class="benefit-icon"></i>
+            <h3>Safe Space</h3>
+            <p>Your privacy and security are our top priorities</p>
+          </div>
+          <div class="benefit-card">
+            <i data-lucide="users" class="benefit-icon"></i>
+            <h3>Peer Support</h3>
+            <p>Connect with others who understand your journey</p>
+          </div>
+          <div class="benefit-card">
+            <i data-lucide="heart" class="benefit-icon"></i>
+            <h3>Professional Help</h3>
+            <p>Access to licensed therapists and counselors</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <div class="container">
+        <div class="section-header">
+          <h2>Everything you need for better mental health</h2>
+          <p>Choose the plan that best fits your needs</p>
+        </div>
+
+        <div class="features-grid">
+          <!-- Free Features -->
+          <div class="feature-card">
+            <div class="feature-header">
+              <i data-lucide="message-square"></i>
+              <h3>AI Chat Support</h3>
+            </div>
+            <p>24/7 access to our AI-powered mental health chatbot for immediate support</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-header">
+              <i data-lucide="book-open"></i>
+              <h3>Self-Help Library</h3>
+            </div>
+            <p>Extensive collection of articles, guides, and resources for personal growth</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-header">
+              <i data-lucide="activity"></i>
+              <h3>Mood Tracking</h3>
+            </div>
+            <p>Track your emotional well-being with our intuitive mood tracking tools</p>
+          </div>
+
+          <!-- Premium Features -->
+          <div class="feature-card premium">
+            <div class="feature-header">
+              <i data-lucide="video"></i>
+              <h3>Video Therapy</h3>
+              <span class="premium-badge">Premium</span>
+            </div>
+            <p>One-on-one video sessions with licensed therapists</p>
+          </div>
+
+          <div class="feature-card premium">
+            <div class="feature-header">
+              <i data-lucide="lock"></i>
+              <h3>Priority Support</h3>
+              <span class="premium-badge">Premium</span>
+            </div>
+            <p>24/7 priority access to mental health professionals</p>
+          </div>
+
+          <div class="feature-card premium">
+            <div class="feature-header">
+              <i data-lucide="award"></i>
+              <h3>Wellness Plan</h3>
+              <span class="premium-badge">Premium</span>
+            </div>
+            <p>Personalized mental wellness plans and progress tracking</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Crisis Support -->
+        <div class="footer-section">
+          <h3>24/7 Crisis Support</h3>
+          <div class="crisis-info">
+            <div class="crisis-line">
+              <i data-lucide="phone"></i>
+              <span>National Crisis Line: 988</span>
+            </div>
+            <p>If you're in immediate danger, please call your local emergency services or 911</p>
+          </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <div class="contact-info">
+            <i data-lucide="mail"></i>
+            <a href="mailto:support@mindfulstudent.com">support@mindfulstudent.com</a>
+          </div>
+        </div>
+
+        <!-- Resources -->
+        <div class="footer-section">
+          <h3>Resources</h3>
+          <ul class="resources-list">
+            <li><a href="#">Student Support Guide</a></li>
+            <li><a href="#">Mental Health Blog</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Made with <i data-lucide="heart" class="heart-icon"></i> by PeerLift</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

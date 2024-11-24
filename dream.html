@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dream Weaver App</title>
+  <link rel="stylesheet" href="dream.css">
+</head>
+<body>
+  
+  <div class="container">
+    <h1>Dream Weaver App</h1>
+    <p>Describe your dream, and we'll analyze it for you.</p>
+    
+    <textarea id="dreamInput" placeholder="Enter your dream here..."></textarea>
+    <button onclick="analyzeDream()">Analyze Dream</button>
+  
+    <div id="result" class="result">
+      <h2>Your Dream Analysis:</h2>
+      <p id="analysis"></p>
+      <div id="visualization" class="visualization"></div>
+    </div>
+  </div>
+
+  <script src="dream.js"></script>
+</body>
+</html>

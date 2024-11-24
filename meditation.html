@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meditation Timer</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --color-primary: #4f46e5;
+            --color-primary-hover: #4338ca;
+            --color-secondary: #e0e7ff;
+            --color-secondary-hover: #c7d2fe;
+            --color-text: #111827;
+            --color-text-light: #6b7280;
+            --color-white: #ffffff;
+            --color-background: #f9fafb;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.5;
+            color: var(--color-text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            flex-direction: column;
+            text-align: center;
+            background-color: var(--color-background);
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+
+        #timer {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--color-text);
+            margin: 30px 0;
+        }
+
+        #startButton {
+            padding: 15px 30px;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 50px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+            width: 150px;
+        }
+
+        #startButton:hover {
+            background-color: var(--color-primary-hover);
+        }
+
+        input[type="number"] {
+            padding: 15px;
+            font-size: 20px;
+            width: 150px;
+            margin-top: 20px;
+            border: 2px solid var(--color-primary);
+            border-radius: 50px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+        }
+
+        #message {
+            font-size: 20px;
+            color: var(--color-primary);
+            display: none;
+            margin-top: 20px;
+        }
+
+        #tips {
+            font-size: 16px;
+            color: var(--color-text-light);
+            margin-top: 40px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: var(--color-white);
+            box-shadow: var(--shadow-md);
+            max-width: 600px;
+            margin-top: 30px;
+        }
+
+        #tips h3 {
+            font-size: 24px;
+            color: var(--color-primary);
+            margin-bottom: 15px;
+        }
+
+        #tips ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #tips li {
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        #tips li span {
+            font-weight: normal;
+            font-size: 16px;
+        }
+
+        .emoji {
+            font-size: 24px;
+        }
+
+        /* Circle Timer */
+        #circle {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: conic-gradient(var(--color-primary) 0deg, var(--color-secondary) 0deg);
+            margin: 20px 0;
+        }
+
+        /* Button states */
+        #startButton.paused {
+            background-color: var(--color-primary-hover);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Meditation Timer</h1>
+    <input type="number" id="timeInput" placeholder="Minutes" />
+    <div id="timer">00:00</div>
+    <div id="circle"></div>
+    <button id="startButton">Start</button>
+    <div id="message">✨ Meditation session complete! ✨</div>
+
+    <div id="tips">
+        <h3>✨ Tips for a Better Meditation 🧘‍♀️✨</h3>
+        <ul>
+            <li><span class="emoji">⏳</span> Start with short sessions and build up gradually 🕒.</li>
+            <li><span class="emoji">🌿</span> Find a peaceful, quiet place 🌳 where you won’t be disturbed 🌙.</li>
+            <li><span class="emoji">🌬️</span> Focus on your breath 🫁, breathing deeply and slowly 💨.</li>
+            <li><span class="emoji">💭</span> Let your thoughts come and go like clouds ☁️—don’t hold onto them!</li>
+            <li><span class="emoji">💖</span> Be kind to yourself 💕 and enjoy the process without judgment.</li>
+            <li><span class="emoji">🌸</span> Try using a calming sound 🎶 or a mantra 🕉️ to help center your mind.</li>
+        </ul>
+    </div>
+
+    <script>
+        let timer;
+        let timeRemaining;
+        let isRunning = false;
+        let isPaused = false;
+        let totalTime;
+
+        // Elements
+        const timerDisplay = document.getElementById('timer');
+        const startButton = document.getElementById('startButton');
+        const timeInput = document.getElementById('timeInput');
+        const message = document.getElementById('message');
+        const circle = document.getElementById('circle');
+
+        // Start/Pause the timer
+        startButton.addEventListener('click', () => {
+            if (isRunning) {
+                // Pause the timer
+                clearInterval(timer);
+                isRunning = false;
+                isPaused = true;
+                startButton.textContent = 'Resume';
+                startButton.classList.add('paused');
+            } else if (isPaused) {
+                // Resume the timer
+                isRunning = true;
+                isPaused = false;
+                startButton.textContent = 'Pause';
+                startButton.classList.remove('paused');
+                startTimer();
+            } else {
+                const minutes = parseInt(timeInput.value);
+                if (isNaN(minutes) || minutes <= 0) {
+                    alert('Please enter a valid number of minutes');
+                    return;
+                }
+
+                timeRemaining = minutes * 60; // Convert minutes to seconds
+                totalTime = timeRemaining;
+                startButton.textContent = 'Pause';
+                startButton.classList.remove('paused');
+                timeInput.disabled = true;
+                isRunning = true;
+                updateTimerDisplay();
+                startTimer();
+            }
+        });
+
+        // Start the timer logic
+        function startTimer() {
+            timer = setInterval(() => {
+                timeRemaining--;
+                updateTimerDisplay();
+                updateCircle();
+
+                if (timeRemaining <= 0) {
+                    clearInterval(timer);
+                    isRunning = false;
+                    showMessage();
+                }
+            }, 1000);
+        }
+
+        // Update the timer display
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            timerDisplay.textContent = `${padZero(minutes)}:${padZero(seconds)}`;
+        }
+
+        // Update the circle
+        function updateCircle() {
+            const progress = (timeRemaining / totalTime) * 360;
+            circle.style.background = `conic-gradient(var(--color-primary) ${progress}deg, var(--color-secondary) ${progress}deg)`;
+        }
+
+        // Add leading zero to single digits
+        function padZero(num) {
+            return num < 10 ? '0' + num : num;
+        }
+
+        // Show a message when the timer finishes
+        function showMessage() {
+            message.style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>

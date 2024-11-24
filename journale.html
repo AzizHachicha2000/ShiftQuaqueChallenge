@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Journal App</title>
+    <style>
+        :root {
+            --color-primary: #1E90FF; /* Bleu vif */
+            --color-sidebar: #2c3e50; /* Gris sombre */
+            --color-text: #ecf0f1; /* Blanc cassé */
+            --color-background: #f5f5f5; /* Gris clair */
+            --color-hover: #3498db; /* Bleu survol */
+            --color-editor-bg: #ffffff; /* Blanc */
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --color-btn-bold: #ff6347; /* Tomate */
+            --color-btn-italic: #32cd32; /* Vert lime */
+            --color-btn-underline: #87ceeb; /* Bleu ciel */
+            --color-btn-strikethrough: #e74c3c; /* Rouge foncé */
+            --color-btn-size: #8e44ad; /* Violet */
+            --color-btn-text-color: #f39c12; /* Jaune */
+            --color-btn-highlight: #2ecc71; /* Vert éclatant */
+            --color-btn-align-left: #f39c12; /* Orange */
+            --color-btn-align-center: #f1c40f; /* Jaune */
+            --color-btn-align-right: #1abc9c; /* Cyan */
+            --color-btn-numbered: #ff69b4; /* Rose */
+            --color-btn-bullet: #20b2aa; /* Vert d'eau */
+            --color-btn-link: #8e44ad; /* Violet pour les liens */
+            --color-btn-indent: #2980b9; /* Bleu pour l'indentation */
+            --color-btn-image: #e67e22; /* Orange pour l'image */
+            --color-btn-undo: #c0392b; /* Rouge pour l'annulation */
+            --color-btn-redo: #27ae60; /* Vert pour la répétition */
+            --color-btn-dark-mode: #2c3e50; /* Gris foncé pour mode sombre */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            background-color: var(--color-background);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background-color: #34495e;
+            color: #ecf0f1;
+        }
+
+        .sidebar {
+            width: 300px;
+            background-color: var(--color-sidebar);
+            color: var(--color-text);
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .sidebar input, .sidebar button {
+            border: none;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .sidebar input {
+            width: calc(100% - 20px);
+            background-color: #34495e;
+            color: var(--color-text);
+        }
+
+        .sidebar input::placeholder {
+            color: var(--color-hover);
+        }
+
+        .entry-list {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .entry-item {
+            padding: 15px;
+            background-color: #34495e;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.3s;
+        }
+
+        .entry-item:hover {
+            background-color: var(--color-hover);
+        }
+
+        .entry-title {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .entry-content {
+            font-size: 14px;
+            color: #bdc3c7;
+        }
+
+        .editor-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            background-color: var(--color-editor-bg);
+        }
+
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .toolbar button {
+            background-color: #ecf0f1;
+            color: black;
+            border: none;
+            padding: 8px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .toolbar button:hover {
+            background-color: var(--color-hover);
+            color: var(--color-text);
+            transform: translateY(-2px);
+        }
+
+        /* Spécificité des boutons */
+        .toolbar button.bold { 
+            background-color: var(--color-btn-bold); 
+        }
+        .toolbar button.italic { 
+            background-color: var(--color-btn-italic); 
+        }
+        .toolbar button.underline { 
+            background-color: var(--color-btn-underline); 
+        }
+        .toolbar button.strikethrough { 
+            background-color: var(--color-btn-strikethrough); 
+        }
+        .toolbar button.font-size { 
+            background-color: var(--color-btn-size); 
+        }
+        .toolbar button.text-color { 
+            background-color: var(--color-btn-text-color); 
+        }
+        .toolbar button.highlight { 
+            background-color: var(--color-btn-highlight); 
+        }
+        .toolbar button.align-left { 
+            background-color: var(--color-btn-align-left); 
+        }
+        .toolbar button.align-center { 
+            background-color: var(--color-btn-align-center); 
+        }
+        .toolbar button.align-right { 
+            background-color: var(--color-btn-align-right); 
+        }
+        .toolbar button.numbered { 
+            background-color: var(--color-btn-numbered); 
+        }
+        .toolbar button.bullet { 
+            background-color: var(--color-btn-bullet); 
+        }
+        .toolbar button.link { 
+            background-color: var(--color-btn-link); 
+        }
+        .toolbar button.indent { 
+            background-color: var(--color-btn-indent); 
+        }
+        .toolbar button.image { 
+            background-color: var(--color-btn-image); 
+        }
+        .toolbar button.undo { 
+            background-color: var(--color-btn-undo); 
+        }
+        .toolbar button.redo { 
+            background-color: var(--color-btn-redo); 
+        }
+        .toolbar button.dark-mode { 
+            background-color: var(--color-btn-dark-mode); 
+        }
+
+        .editor {
+            flex: 1;
+            border: 1px solid #d1d5db;
+            padding: 15px;
+            font-size: 16px;
+            outline: none;
+            border-radius: 8px;
+            background-color: var(--color-editor-bg);
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <input type="text" id="entryTitle" placeholder="Note Title" />
+        <input type="text" id="searchInput" placeholder="Search entries..." oninput="filterEntries()" />
+        <button onclick="addNewEntry()">+ Add Entry</button>
+        <div class="entry-list" id="entryList">
+        </div>
+    </div>
+
+    <div class="editor-container">
+        <div class="toolbar">
+            <button class="bold" onclick="formatText('bold')">🅱️ Bold</button>
+            <button class="italic" onclick="formatText('italic')">✍️ Italic</button>
+            <button class="underline" onclick="formatText('underline')">🔽 Underline</button>
+            <button class="strikethrough" onclick="formatText('strikeThrough')">➖ Strike</button>
+            <button class="font-size" onclick="changeFontSize()">A</button>
+            <button class="text-color" onclick="changeTextColor()">🎨 Text Color</button>
+            <button class="highlight" onclick="changeHighlightColor()">🟨 Highlight</button>
+            <button class="align-left" onclick="formatText('justifyLeft')">Align Left</button>
+            <button class="align-center" onclick="formatText('justifyCenter')">Align Center</button>
+            <button class="align-right" onclick="formatText('justifyRight')">Align Right</button>
+            <button class="numbered" onclick="formatText('insertOrderedList')">🔢 Numbered List</button>
+            <button class="bullet" onclick="formatText('insertUnorderedList')">🔵 Bullet List</button>
+            <button class="link" onclick="addLink()">🔗 Link</button>
+            <button class="indent" onclick="indentText()">Indent</button>
+            <button class="image" onclick="addImage()">🖼️ Image</button>
+            <button class="undo" onclick="document.execCommand('undo')">Undo</button>
+            <button class="redo" onclick="document.execCommand('redo')">Redo</button>
+            <button class="dark-mode" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+        </div>
+
+        <div contenteditable="true" class="editor" id="editor" oninput="saveEditorContent()">Start writing your journal entry...</div>
+    </div>
+
+    <script>
+        let entries = JSON.parse(localStorage.getItem('entries')) || [];
+        const entryList = document.getElementById('entryList');
+        const editor = document.getElementById('editor');
+        const entryTitleInput = document.getElementById('entryTitle');
+        const searchInput = document.getElementById('searchInput');
+
+        // Fonction de formatage du texte
+        function formatText(command, value = null) {
+            document.execCommand(command, false, value);
+        }
+
+        // Fonction pour ajouter un nouvel élément
+        function addNewEntry() {
+            const title = entryTitleInput.value.trim();
+            const content = editor.innerHTML.trim();
+
+            if (!title || !content || content === 'Start writing your journal entry...') {
+                alert('Please provide both a title and content!');
+                return;
+            }
+
+            const entry = { id: Date.now(), title, content };
+            entries.unshift(entry);
+            entryTitleInput.value = '';
+            editor.innerHTML = 'Start writing your journal entry...';
+            saveEntries();
+            renderEntries();
+        }
+
+        // Sauvegarde des entrées dans le localStorage
+        function saveEntries() {
+            localStorage.setItem('entries', JSON.stringify(entries));
+        }
+
+        // Affichage des entrées dans la sidebar
+        function renderEntries() {
+            entryList.innerHTML = '';
+            if (entries.length === 0) {
+                entryList.innerHTML = '<p>No entries yet.</p>';
+                return;
+            }
+
+            entries.forEach((entry) => {
+                const entryItem = document.createElement('div');
+                entryItem.className = 'entry-item';
+                entryItem.innerHTML = `
+                    <div class="entry-title">${entry.title}</div>
+                    <div class="entry-content">${entry.content.slice(0, 50)}...</div>
+                `;
+                entryItem.onclick = () => loadEntry(entry);
+                entryList.appendChild(entryItem);
+            });
+        }
+
+        // Chargement d'une entrée
+        function loadEntry(entry) {
+            entryTitleInput.value = entry.title;
+            editor.innerHTML = entry.content;
+        }
+
+        // Fonction pour filtrer les entrées
+        function filterEntries() {
+            const query = searchInput.value.toLowerCase();
+            const filtered = entries.filter(entry => entry.title.toLowerCase().includes(query) || entry.content.toLowerCase().includes(query));
+            renderFilteredEntries(filtered);
+        }
+
+        // Affichage des entrées filtrées
+        function renderFilteredEntries(filteredEntries) {
+            entryList.innerHTML = '';
+            if (filteredEntries.length === 0) {
+                entryList.innerHTML = '<p>No matching entries found.</p>';
+                return;
+            }
+
+            filteredEntries.forEach(entry => {
+                const entryItem = document.createElement('div');
+                entryItem.className = 'entry-item';
+                entryItem.innerHTML = `
+                    <div class="entry-title">${entry.title}</div>
+                    <div class="entry-content">${entry.content.slice(0, 50)}...</div>
+                `;
+                entryItem.onclick = () => loadEntry(entry);
+                entryList.appendChild(entryItem);
+            });
+        }
+
+        // Change la taille de la police
+        function changeFontSize() {
+            let size = prompt('Enter font size (e.g., 16px, 18px, etc.):', '16px');
+            if (size) {
+                editor.style.fontSize = size;
+            }
+        }
+
+        // Change la couleur du texte
+        function changeTextColor() {
+            let color = prompt('Enter a color for the text (e.g., red, #ff0000):', '#000000');
+            if (color) {
+                document.execCommand('foreColor', false, color);
+            }
+        }
+
+        // Change la couleur du surlignage
+        function changeHighlightColor() {
+            let color = prompt('Enter a color for the highlight (e.g., yellow, #ffff00):', '#ffff00');
+            if (color) {
+                document.execCommand('hiliteColor', false, color);
+            }
+        }
+
+        // Ajout d'un lien
+        function addLink() {
+            const url = prompt('Enter a URL:', 'http://');
+            if (url) {
+                document.execCommand('createLink', false, url);
+            }
+        }
+
+        // Ajout d'une image
+        function addImage() {
+            const url = prompt('Enter image URL:', 'http://');
+            if (url) {
+                const img = `<img src="${url}" alt="Image" />`;
+                document.execCommand('insertHTML', false, img);
+            }
+        }
+
+        // Mode sombre
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        // Sauvegarde automatique du contenu de l'éditeur
+        function saveEditorContent() {
+            const title = entryTitleInput.value.trim();
+            const content = editor.innerHTML.trim();
+            if (title && content) {
+                localStorage.setItem('autoSave', JSON.stringify({ title, content }));
+            }
+        }
+
+        renderEntries();
+    </script>
+
+</body>
+</html>

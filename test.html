@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Dashboard</title>
+    <link rel="stylesheet" href="aftersignin.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="nav-logo">
+                    <i data-lucide="home"></i>
+                </div>
+                <div class="nav-links">
+                    <a href="#" class="nav-item">
+                        <i data-lucide="shopping-bag"></i>
+                        <span>Marketplace</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="clipboard-list"></i>
+                        <span>To-Do List</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="book"></i>
+                        <span>Journal</span>
+                    </a>
+                </div>
+            </div>
+            <div class="nav-right">
+                <div class="streak">
+                    <i data-lucide="flame"></i>
+                    <span>12 Day Streak</span>
+                </div>
+                <button class="logout-btn">
+                    <i data-lucide="log-out"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="emergency-button">
+            <button>
+                <i data-lucide="phone"></i>
+                <span>Need immediate help? Click here for emergency support</span>
+            </button>
+        </div>
+
+        <section class="activities-section">
+            <h2>Recommended for You</h2>
+            <div class="activity-carousel">
+                <button class="carousel-btn prev" id="prevActivity">
+                    <i data-lucide="chevron-left"></i>
+                </button>
+                <div class="activity-card">
+                    <img src="" alt="" id="activityImage">
+                    <div class="activity-overlay">
+                        <h3 id="activityTitle"></h3>
+                        <p id="activityDescription"></p>
+                    </div>
+                </div>
+                <button class="carousel-btn next" id="nextActivity">
+                    <i data-lucide="chevron-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <section class="spotify-section">
+            <div class="spotify-card">
+                <i data-lucide="music"></i>
+                <div>
+                    <h2>Today's Recommended Playlist</h2>
+                    <p>Calming Meditation Music • 1hr 30min</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid-container">
+            <section class="therapists-section">
+                <h2>Connect with a Therapist</h2>
+                <div class="therapists-grid" id="therapistsGrid"></div>
+            </section>
+
+            <section class="communities-section">
+                <h2>Join a Community</h2>
+                <div class="communities-list" id="communitiesList"></div>
+            </section>
+        </div>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
